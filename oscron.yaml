@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: oscron
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: os-cron-container
+            image: vishnuhdadhich/python-arg-test
+            envFrom:
+            - secretRef:
+                name: ossecret
+            args:
+            - os.py
+          restartPolicy: OnFailure
