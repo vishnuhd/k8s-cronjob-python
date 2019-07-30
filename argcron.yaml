@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: argcron
 spec:
-  schedule: "12 06 * * *"
+  schedule: "*/1 * * * *"
   concurrencyPolicy: "Forbid"
   startingDeadlineSeconds: 120
   jobTemplate:
